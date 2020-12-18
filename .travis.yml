@@ -1,0 +1,35 @@
+language: node_js
+
+cache:
+  directories: 
+    - node_modules 
+    - ~/.npm
+node_js: 
+  - '15'
+
+git: 
+  depth: 3
+
+script:
+  - npm run prebuild
+  - npm run build
+
+notifications:
+  email: 
+    recipients: 
+      - johan-avila@outlook.com
+    on_success: always
+    on_failure:  always 
+
+
+
+deploy: 
+  provider: heroku
+  skip_cleanup: true
+  keep-history: true
+  api_key: 
+    secure: "tEVN6ZBt1qFh/sgSINApgVAl2FqYe6Dqpa+rN3lau642LH7cvpGW2WEOShin2ZoPiJSynWfiJwV3MjjQbgY/PW6f7Xzz2DCVw38J7Eul2AOhq5k66uYgbekR+TkJ1KpvZrd//+N45Jl1AxJ4cSkrCAs7yUrO1nqwwuEnMHSA0C3i/VbE5avzI1W1Lq+9p8rCmWFIjESyD2z9PzafGrZF0MxvKxjH6fvWTOj4sW9LM3dWPwRFxoT1p5Z6PiuiJxLpsQfI8SOn5d+FD/h/9/aLn3eHn0E+ZpAbYZag48HwLFMiefa8U8xQr1thevuuCooLHN9nUZ8kj52GachWOdCaVwjZv/eiDkS6PMaVsztrsXaZxgqxd2Qv0FmYsFoKid83tYYMn32InO57ZEvfkS21znDF3X2cCOofWb40AaZFFd75Wo8IW12QC48iIaJanXnm3vwi5+hidPcKWOp3i8jxSeZk6WSkMPMQcWf47rvwvoq5Zf+HSSBIA0m5i2Dguv/mJvJl8rBGHAxrC/5lSa9DaPsFVsjKrqHNALkOoXWEie9WV8HHDJ3r2E9GEHnMBs/8Gdk54jUqgS0lLE6ZbCeCr5WjRdeyVzQCNqEj0eEa8DKtyPZ9YS4326akJtDQJr576FY8rYYt76p6T07HI/DHKpoHfw6uA5bLMZgtU4jpX9o="
+  
+  app: hackaton-master
+  on:
+    repo: Fsociety-Hackaton/backend
