@@ -1,5 +1,6 @@
-import {  Schema } from "mongoose";
+import { Schema } from 'mongoose';
 
-export const TestDeploySchema  = new Schema({
-  name: String
-})
+export const TestDeploySchema = new Schema({
+  name: String,
+  
+});

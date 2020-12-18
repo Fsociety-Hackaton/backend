@@ -1,6 +1,5 @@
-import { Document } from "mongoose"
+import { Document } from 'mongoose';
 
-export interface TestDeploy extends Document  {
-    name: String
-
+export interface TestDeploy extends Document {
+  name: string;
 }

@@ -6,16 +6,23 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { UserFavoritesModule } from './user-favorites/user-favorites.module';
 import { JobsModule } from './jobs/jobs.module';
-import { TestDeployModule } from './test-deploy/test-deploy.module'
+import { TestDeployModule } from './test-deploy/test-deploy.module';
 import { ConfigModule } from '@nestjs/config';
 
-
 @Module({
-  imports: [ConfigModule.forRoot({
-    isGlobal: true
-  }) ,MongooseModule.forRoot(process.env.URI_DB, {
-    poolSize: 3
-  }), UsersModule, AuthModule, UserFavoritesModule, JobsModule, TestDeployModule ],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    MongooseModule.forRoot(process.env.URI_DB, {
+      poolSize: 3,
+    }),
+    UsersModule,
+    AuthModule,
+    UserFavoritesModule,
+    JobsModule,
+    TestDeployModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

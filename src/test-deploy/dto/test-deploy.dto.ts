@@ -1,3 +1,3 @@
 export class CreateTestDeployDto {
-    readonly name: string
+  readonly name: string;
 }
