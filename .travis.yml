@@ -9,6 +9,9 @@ node_js:
 
 git: 
   depth: 3
+branches:
+  only:
+    - master
 
 script:
   - npm run prebuild
@@ -20,8 +23,6 @@ notifications:
       - johan-avila@outlook.com
     on_success: always
     on_failure:  always 
-
-
 
 deploy: 
   provider: heroku
