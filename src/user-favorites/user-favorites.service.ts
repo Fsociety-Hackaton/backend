@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { UserFavorite } from './interfaces/user-favorites.interfaces';
+import { CreateUserFavoritesDto } from './dto/create-user-favorites.dto'
 
 @Injectable()
 export class UserFavoritesService {
@@ -12,14 +13,32 @@ export class UserFavoritesService {
         const favorites = await this.userFavoriteModel.find()
         return favorites
     }
-    getOne(id) {
-        return { ok: 'getOne' }
+    async getOne(id) {
+        const favorite = await this.userFavoriteModel.findOne({_id: id})
+
+        if(!favorite) throw new NotFoundException("Dont exist")
+        return {
+            name: favorite.name,
+            jobId : favorite.jobId,
+            date: favorite.date,
+            portal: favorite.portal
+        }
     }
-    addOne(dto) {
-        return { ok: 'addOne' }
+    async addOne(dto: CreateUserFavoritesDto) {
+        const {name, jobId, date, portal} = dto
+
+        const favorite = await this.userFavoriteModel.create({name, jobId, date, portal})
+
+        return {
+            name: favorite.name,
+            jobId : favorite.jobId,
+            date: favorite.date,
+            portal: favorite.portal
+        }
     }
 
-    deleteOne(id: string) {
-        return { ok: 'deleteOne' }
+    async deleteOne(id) {
+        const userFavoriteDel = await this.userFavoriteModel.deleteOne()
+        return userFavoriteDel 
     }
 }
