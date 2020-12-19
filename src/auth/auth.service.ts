@@ -34,7 +34,7 @@ export class AuthService {
             user,
             accessToken: await this.jwtService.sign(payload)
         }        
-        console.log("respons______________________e");
+        
         return response
     }
 }

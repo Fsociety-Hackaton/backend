@@ -1,6 +1,5 @@
 import { Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth } from '@nestjs/swagger';
-import { captureRejectionSymbol } from 'events';
 import { User } from 'src/common/decorators';
 import { AuthService } from './auth.service';
 
