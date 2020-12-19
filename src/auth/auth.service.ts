@@ -14,6 +14,7 @@ export class AuthService {
         const comparePassword = await  compare(password, user.password) 
         if(user && comparePassword ){
             
+            
             return {
                 _id: user.id,
                 name: user.name ,
@@ -23,14 +24,26 @@ export class AuthService {
         }
         return null  
     }
-    async createToken (user){
-        console.log(user);
+    async login (user){
+    
+            
+        const { _id, ...rest} = user
         
-        const { id, ...rest} = user
-        const payload = { sub:id};
-        return {
-            ...rest,
-            accessToken: this.jwtService.sign(payload)
-        }
+        const payload = { sub:_id};
+        const response = {
+            user,
+            accessToken: await this.jwtService.sign(payload)
+        }        
+        console.log("respons______________________e");
+        return response
     }
 }
+
+
+
+
+
+
+
+
+        
