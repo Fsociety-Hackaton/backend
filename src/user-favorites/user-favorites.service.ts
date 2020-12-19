@@ -8,7 +8,7 @@ import { CreateUserFavoritesDto } from './dto/create-user-favorites.dto'
 export class UserFavoritesService {
 
     constructor(@InjectModel('UserFavorite') readonly userFavoriteModel: Model<UserFavorite>) {}
-
+    
     async getMany() {
         const favorites = await this.userFavoriteModel.find()
         return favorites
@@ -25,9 +25,9 @@ export class UserFavoritesService {
         }
     }
     async addOne(dto: CreateUserFavoritesDto) {
-        const {name, jobId, date, portal} = dto
+        const {name, user_id ,jobId, date, portal} = dto
 
-        const favorite = await this.userFavoriteModel.create({name, jobId, date, portal})
+        const favorite = await this.userFavoriteModel.create({name, user_id, jobId, date, portal})
 
         return {
             name: favorite.name,
