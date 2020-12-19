@@ -3,7 +3,13 @@ import { ApiBearerAuth } from '@nestjs/swagger';
 import { JWTAuthGuard } from 'src/auth/guards/jwtAuth.guard';
 import { CreateUserFavoritesDto } from './dto';
 import { UserFavoritesService } from './user-favorites.service';
+import { ApiTags, ApiHeader, ApiCreatedResponse } from '@nestjs/swagger';
 
+@ApiHeader({
+  name: 'Get Favorites offers',
+  description: 'Favorites Methods',
+})
+@ApiTags('APP Module')
 @Controller('user-favorites')
 export class UserFavoritesController {
 
@@ -28,6 +34,7 @@ export class UserFavoritesController {
     @UseGuards(JWTAuthGuard)
     @ApiBearerAuth()
     @Post()
+    @ApiCreatedResponse({ description: 'User created' })
     async addOne(
         @Body() dto: CreateUserFavoritesDto
         ) {
