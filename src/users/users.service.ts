@@ -4,7 +4,7 @@ import { hash } from 'bcryptjs';
 import { Model } from 'mongoose';
 import { CreateUserDto } from './dto';
 import { Users } from './interfaces/users.interface';
-
+ 
 @Injectable()
 export class UsersService {
     constructor(@InjectModel('Users') private readonly  Users: Model<Users>){}
@@ -50,5 +50,9 @@ export class UsersService {
     async deleteOne (id) {
         const userDeleted = await this.Users.deleteOne()
         return userDeleted 
+    }
+    // AUTH
+    async findByEmail(email: string){
+        return await this.Users.findOne({email: email})
     }
 }
