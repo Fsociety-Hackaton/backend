@@ -11,7 +11,6 @@ export class AuthController {
     constructor(private readonly authService : AuthService){}
     
     @UseGuards(LocalAuthGuard) 
-    @ApiBearerAuth()
     @Post("login")
     async login(@User() user: any){   
         const data = await this.authService.login(user)        
