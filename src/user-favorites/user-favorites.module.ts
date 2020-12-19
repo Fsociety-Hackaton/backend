@@ -5,7 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UserFavoriteSchema } from './schema/user-favorites.shema';
 @Module({
   imports: [MongooseModule.forFeature([
-    {name: 'UserFavoriteSchema', schema: UserFavoriteSchema}
+    {name: 'UserFavorite', schema: UserFavoriteSchema}
   ])],
   providers: [UserFavoritesService],
   controllers: [UserFavoritesController]

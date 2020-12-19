@@ -1,6 +1,6 @@
 export class CreateUserFavoritesDto {
-    name: string;
-    jobId: string;
-    date: string;
-    portal: string;
+    readonly name: string;
+    readonly jobId: string;
+    readonly date: string;
+    readonly portal: string;
 }

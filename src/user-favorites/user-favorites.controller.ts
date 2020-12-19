@@ -1,6 +1,7 @@
 import { Controller, Delete, Get, Param, Body, Post, Put } from '@nestjs/common';
-import { CreateUserFavoritesDto, EditUserFavoritesDto } from './dto';
+import { CreateUserFavoritesDto } from './dto';
 import { UserFavoritesService } from './user-favorites.service';
+
 @Controller('user-favorites')
 export class UserFavoritesController {
 
@@ -24,13 +25,6 @@ export class UserFavoritesController {
         return this.userfavoritesService.addOne(dto);
     }
 
-    /*@Put(':id')
-    editOne(
-        @Param('id') id: string,
-        @Body() dto: EditUserFavoritesDto
-        ) {
-        return this.userfavoritesService.editOne(id, dto);
-    }*/
 
     @Delete(':id')
     deleteOne(@Param('id') id: string) {
