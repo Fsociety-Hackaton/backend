@@ -8,26 +8,27 @@ export class UserFavoritesController {
     constructor(private readonly userfavoritesService: UserFavoritesService) {}
 
     @Get()
-    getMany() {
-        return this.userfavoritesService.getMany()
+    async getMany() {
+        return await this.userfavoritesService.getMany()
     }
 
     @Get(':id')
-    getOne(@Param('id') id: string) {
-        console.log(id)
-        return this.userfavoritesService.getOne(id)
+    async getOne(@Param('id') id) {
+        const usersfavorite = await this.userfavoritesService.getOne(id)
+        return (usersfavorite)
     }
 
     @Post()
-    addOne(
+    async addOne(
         @Body() dto: CreateUserFavoritesDto
     ) {
-        return this.userfavoritesService.addOne(dto);
+        const usersfavorite = await this.userfavoritesService.addOne(dto)    
+        return {message: "User created", usersfavorite}
     }
 
 
     @Delete(':id')
-    deleteOne(@Param('id') id: string) {
+    async deleteOne(@Param('id') id) {
         return this.userfavoritesService.deleteOne(id)
     }
 }
