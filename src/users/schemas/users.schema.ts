@@ -1,9 +1,10 @@
 import { Schema } from 'mongoose';
 
-export const TestDeploySchema = new Schema({
-  name: String,
-  lasteName: String,
-  email: String,  
+export const UserSchema = new Schema({
+  name: {type: String, required: true},
+  lasteName: {type: String, required: true},
+  email: {type: String, required: true, unique: true},  
+  password: {type: String, required: true} 
 });
 
 

@@ -1,16 +1,22 @@
-import { Controller, Delete, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
+import { CreateUserDto } from './dto';
 import { UsersService } from './users.service'
 @Controller('users')
 export class UsersController {
-    constructor(private userService: UsersService){}
+    constructor(private readonly userService: UsersService){}
+    
     @Get(":id")
-    getUser(@Param("id") id: string){
-        this.userService.getOne(id)
+    async getUser(@Param("id") id){
+        
+        const data = await this.userService.getOne(id)
+        return {data}
     }
     
     @Post()
-    createUser(){
+    async createUser(@Body() dto: CreateUserDto){
+        const data = await this.userService.createOne(dto)
         
+        return {message: "User created", data}        
     }
     
     @Delete()

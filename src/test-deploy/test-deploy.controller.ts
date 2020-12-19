@@ -8,9 +8,7 @@ import { TestDeploy } from './interfaces/test-deploy.interface';
 
 @Controller('test-deploy')
 export class TestDeployController {
-  constructor(
-    @InjectModel('TestDeploy') private readonly TestDeploy: Model<TestDeploy>,
-     ) {}
+  constructor(@InjectModel('TestDeploy') private readonly TestDeploy: Model<TestDeploy>) {}
   @Get()
   async find() {
     const response = await this.TestDeploy.find();
