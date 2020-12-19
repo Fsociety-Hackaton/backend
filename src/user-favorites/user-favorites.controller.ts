@@ -1,7 +1,13 @@
 import { Controller, Delete, Get, Param, Body, Post, Put } from '@nestjs/common';
 import { CreateUserFavoritesDto } from './dto';
 import { UserFavoritesService } from './user-favorites.service';
+import { ApiTags, ApiHeader, ApiCreatedResponse } from '@nestjs/swagger';
 
+@ApiHeader({
+  name: 'Get Favorites offers',
+  description: 'Favorites Methods',
+})
+@ApiTags('APP Module')
 @Controller('user-favorites')
 export class UserFavoritesController {
 
@@ -19,6 +25,7 @@ export class UserFavoritesController {
     }
 
     @Post()
+    @ApiCreatedResponse({ description: 'User created' })
     async addOne(
         @Body() dto: CreateUserFavoritesDto
     ) {

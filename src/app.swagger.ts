@@ -6,7 +6,7 @@ export const initSwagger = (app: INestApplication) => {
     .setTitle('Hckaton Jobs')
     .addBearerAuth()
     .setDescription(
-      'Hackaton Pl-Master documentacion',
+      'Hackaton Pl-Master documentacion de API scrap de vacantes de empleo y apoyo a Talent Placement',
     )
     .build();
   const document = SwaggerModule.createDocument(app, swaggerConfig);
