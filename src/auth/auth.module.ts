@@ -12,20 +12,20 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 
 @Module({
   imports:[
-    PassportModule.register({
-      defaultStrategy: 'jwt'
-    }),
+    UsersModule,
+    PassportModule,
     JwtModule.registerAsync({
       useFactory: () => ({
         secret: process.env.SECRET_JWT,
         signOptions: { expiresIn: '60m' },
       })
     }),
-      UsersModule
     ],
     
     providers: [AuthService, LocalStrategy, JwtStrategy],
-    controllers: [AuthController]
+    controllers: [AuthController],
+    exports: [AuthService]
+
   })
   export class AuthModule {}
   

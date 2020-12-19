@@ -7,7 +7,6 @@ import { JobsService } from './jobs.service';
 export class JobsController {
     constructor(private readonly jobsService: JobsService){}
     
-    @UseGuards(JWTAuthGuard)
     @Get()
     async getAllJobs(){
         const data = await this.jobsService.getAll([])
