@@ -17,8 +17,8 @@ import { ConfigModule } from '@nestjs/config';
     MongooseModule.forRoot(process.env.URI_DB, {
       poolSize: 3,
     }),
-    UsersModule,
     AuthModule,
+    UsersModule,
     UserFavoritesModule,
     JobsModule,
     TestDeployModule,
